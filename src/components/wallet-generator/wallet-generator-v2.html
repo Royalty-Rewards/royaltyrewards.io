@@ -1,0 +1,384 @@
+<style media="screen">
+body {
+  background-color: #eee;
+  font-family: sans-serif;
+  font-size: 18px;
+  margin: 0;
+}
+
+.centerer {
+  margin-left: 50%;
+  min-height: 100%;
+}
+
+.centered:before {
+  box-shadow: -10px 0 15px -10px #999 inset;
+  content: " ";
+  height: 100%;
+  left: -10px;
+  position: absolute;
+  top: 0;
+  width: 10px;
+}
+
+.centered:after {
+  box-shadow: 10px 0 15px -10px #999 inset;
+  content: " ";
+  height: 100%;
+  right: -10px;
+  position: absolute;
+  top: 0;
+  width: 10px;
+}
+
+.centered {
+  background-color: #fff;
+  border-left: 1px solid #888;
+  border-right: 1px solid #888;
+  dbox-shadow: -1px 0 15px 0 #999;
+  margin-left: -370px;
+  min-height: 100%;
+  padding: 20px;
+  position: relative;
+  width: 700px;
+}
+
+.hidden {
+  display: none;
+}
+
+p {
+  text-align: justify;
+  margin-bottom: 30px;
+}
+th {
+  text-align: left;
+  padding: 0 15px 15px 0;
+}
+td {
+  padding: 0 15px 15px 0;
+}
+
+input[type=text] {
+  border: 1px solid #555;
+  font-size: 16px;
+  padding: 10px;
+  width: 500px;
+}
+
+input[type=password] {
+  border: 1px solid #555;
+  font-size: 16px;
+  padding: 10px;
+  width: 500px;
+}
+
+input[type=file] {
+  dbackground: #fff;
+  border: 1px solid #555;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0;
+  padding: 10px;
+  position: relative;
+  dvisibility: hidden;
+  width: 500px;
+}
+
+input[type=text].readonly {
+  border: 1px solid #ccc;
+  color: #888;
+}
+
+.file {
+  border: 1px solid green;
+  color: #444;
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 2px;
+  padding: 13px 10px 12px;
+  position: absolute;
+  text-align: center;
+  width: 478px;
+}
+
+.file.highlight {
+  box-shadow: 0px 0px 5px #888;
+}
+
+.option {
+  border: 1px solid #999;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.3;
+  padding: 10px;
+  text-align: center;
+  transition: opacity 0.1s linear;
+  width: 200px;
+}
+
+.option.selected {
+  opacity: 1;
+}
+
+.option:hover {
+  box-shadow: 0px 0px 5px #888;
+  opacity: 1;
+}
+
+table {
+  margin-bottom: 40px;
+}
+
+div.activity {
+  font-family: monospace;
+  margin-bottom: 40px;
+}
+
+div.activity a {
+  display: block;
+  text-decoration: none;
+}
+
+.username {
+  color: #888;
+  font-size: 14px;
+}
+
+.submit {
+  border: 1px solid #555;
+  box-shadow: 0px 0px 5px #888;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  text-align: center;
+  transition: opacity 0.1s linear;
+  width: 480px;
+}
+
+.submit:hover {
+  border: 1px solid #999;
+  box-shadow: 0px 0px 5px #aaa;
+}
+
+.submit:active {
+  box-shadow: none;
+}
+
+.submit.disable {
+  box-shadow: none;
+  opacity: 0.5;
+}
+
+.submit.disable:hover {
+  border: 1px solid #555;
+  box-shadow: none;
+}
+
+.submit.disable:active {
+  box-shadow: none;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+</style>
+<div class="centerer" id="screen-select">
+    <div class="centered">
+        <h1>Ethereum Wallet Tool</h1>
+        <hr />
+        <h2>Summon Brain Wallet</h2>
+        <p>
+            A brain wallet generates an <i>Ethereum</i> wallet from a username and a password
+            without using any servers to store your information. If you lose your username
+            or password, <b>no one</b> can help you recover them. Anyone who can guess your
+            username and password can steal your funds. Brain wallets should <b>not</b> be
+            considered a safe way to store large amounts of ether nor for long periods of time.
+        </p>
+        <table>
+            <tr>
+                <th>E-mail Address:</th>
+                <td><input type="text" placeholder="(e-mail address)" id="select-brainwallet-username" class="brain-gen user" /></td>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <td><input type="password" placeholder="(password)" id="select-brainwallet-password" class="brain-gen pw" /></td>
+            </tr>
+            <tr>
+                <th>Confirm Password:</th>
+                <td><input type="password" placeholder="(same password)" id="select-brainwallet-confirm-password" class="brain-gen confirm" /></td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <div id="select-submit-brainwallet" class="submit">Summon Brain Wallet</div>
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <h2>Load JSON Wallet</h2>
+        <p>
+            If you have a JSON wallet file from <i>geth</i> or from the initial <i>Ethereum</i>
+            crowd sale, you can decrypt it here. No information is shared with <b>any</b>
+            server.
+        </p>
+        <table>
+            <tr>
+                <th>JSON Wallet:</th>
+                <td><div class="file" id="select-wallet-drop">Drop JSON wallet file here</div><input type="file" id="select-wallet-file" /></td>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <td><input type="password" placeholder="(password)" id="select-wallet-password" /></td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <div id="select-submit-wallet" class="submit disable">Unlock JSON Wallet</div>
+                </td>
+            </tr>
+        </table>
+
+        <hr />
+        <h2>Mnemonic Phrase Wallet</h2>
+        <p>
+            If you have a 12 word mnemonic phrase, you can generate your wallet here.
+            No information is shared with <b>any</b> server.
+        </p>
+        <table>
+            <tr>
+                <th>Mnemonic Phrase:</th>
+                <td><input type="text" placeholder="(mnemonic phrase)" id="select-mnemonic-phrase" /></td>
+            </tr>
+            <tr>
+                <th>Path:</th>
+                <td><input type="text" placeholder="(path)" id="select-mnemonic-path" value="m/44'/60'/0'/0/0" /></td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <div id="select-submit-mnemonic" class="submit disable">Derive Wallet</div>
+                </td>
+            </tr>
+        </table>
+
+        <hr />
+        <h2>Raw Private Key</h2>
+        <p>
+        </p>
+        <table>
+            <tr>
+                <th>Private Key:</th>
+                <td><input type="text" placeholder="(private key)" id="select-privatekey" /></td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <div id="select-submit-privatekey" class="submit disable">Unlock JSON Wallet</div>
+                </td>
+            </tr>
+        </table>
+
+        <hr />
+        <h3>Disclaimer:</h3>
+        <p>
+            This is beta software, with no warranty. <b>Use at your own risk.</b>
+        </p>
+    </div>
+</div>
+<div class="centerer hidden" id="screen-loading">
+    <div class="centered">
+        <h1>Loading Wallet</h1>
+        <hr />
+        <h2 id="loading-header"></h2>
+        <table>
+            <tr>
+                <th>Progress:</th>
+                <td>
+                    <input type="text" readonly="readonly" class="readonly" id="loading-status" value="" /></div>
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <div id="loading-cancel" class="submit">Cancel</div>
+                </td>
+            </tr>
+        </table>
+
+        <hr />
+        <h3>Disclaimer:</h3>
+        <p>
+            This is beta software, with no warranty. <b>Use at your own risk.</b>
+        </p>
+    </div>
+</div>
+<div class="centerer hidden" id="screen-wallet">
+    <div class="centered">
+        <h1>Ethereum Wallet<span id="wallet-username" class="username right"></span></h1>
+        <hr />
+        <h3>Wallet Details:</h3>
+        <table>
+            <tr>
+                <th>Address:</th>
+                <td>
+                    <input type="text" readonly="readonly" class="readonly" id="wallet-address" value="" /></div>
+                </td>
+            </tr>
+            <tr>
+                <th>Network:</th>
+                <td>
+                    <div class="option left" id="option-testnet">Testnet (Ropsten)</div>
+                    <div class="option right selected" id="option-mainnet">Mainnet (Homestead)</div>
+                </td>
+            </tr>
+            <tr>
+                <th>Balance:</th>
+                <td>
+                    <input type="text" readonly="readonly" class="readonly" id="wallet-balance" value="0.0" /></div>
+                </td>
+            </tr>
+            <tr>
+                <th>Nonce:</th>
+                <td>
+                    <input type="text" readonly="readonly" class="readonly" id="wallet-transaction-count" value="0" /></div>
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <div id="wallet-submit-refresh" class="submit">Refresh</div>
+                </td>
+            </tr>
+        </table>
+        <h3>Send Ether:</h3>
+        <table>
+            <tr>
+                <th>Target Address:</th>
+                <td><input type="text" placeholder="(target address)" id="wallet-send-target-address" /></td>
+            </tr>
+            <tr>
+                <th>Amount:</th>
+                <td><input type="text" placeholder="(amount)" id="wallet-send-amount" /></td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td>
+                    <div id="wallet-submit-send" class="submit disable">Send Ether</div>
+                </td>
+            </tr>
+        </table>
+        <h3>Session Activity</h3>
+        <div id="wallet-activity" class="activity"></div>
+
+        <hr />
+        <h3>Disclaimer:</h3>
+        <p>
+            This is beta software, with no warranty. <b>Use at your own risk.</b>
+        </p>
+    </div>
+</div>
