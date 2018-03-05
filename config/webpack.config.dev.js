@@ -124,7 +124,7 @@ module.exports = {
         ]
       },
       {
-          test: /\.(png|jpeg)$/,
+          test: /\.(png|jpeg|jpg)$/,
           loader: 'file-loader',
           options: { name: 'images/[hash].[ext]'}
       },
