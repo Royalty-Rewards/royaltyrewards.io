@@ -123,11 +123,21 @@ module.exports = {
          "css-loader"
         ]
       },
-      {
-          test: /\.(png|jpeg|jpg)$/,
-          loader: 'file-loader',
-          options: { name: 'images/[hash].[ext]'}
-      },
+    //   {
+    //     test: /\.(png|jp(e*)g|svg)$/,
+    //     use: [{
+    //         loader: 'url-loader',
+    //         options: {
+    //             limit: 8000, // Convert images < 8kb to base64 strings
+    //             name: 'images/[hash]-[name].[ext]'
+    //         }
+    //     }]
+    // },
+      // {
+      //      test: /\.(png|jp(e*)g|svg)$/,
+      //     loader: 'file-loader',
+      //     options: { name: 'images/[hash].[ext]'}
+      // },
       {
           test: /\.(html)$/,
           loader: 'html-loader'
@@ -140,7 +150,7 @@ module.exports = {
         {
           name: 'fonts/[name].[hash].[ext]'
         }
-      }
+      },
       // Truffle solidity loader to watch for changes in Solitiy files and hot
       // reload contracts with webpack.
       //
@@ -159,6 +169,11 @@ module.exports = {
     // In development, this will be an empty string.
     new InterpolateHtmlPlugin({
       PUBLIC_URL: publicUrl
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
     }),
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({

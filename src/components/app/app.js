@@ -3,7 +3,8 @@ import "./app.css";
 import $ from "jquery";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import Dashboard from "../dashboard/dashboard";
-import LandingPage from "../landing-page/landing-page";
+import LandingPage from "../home/landing-page";
+// import LandingPage from "../landing-page/landing-page";
 // import Web3 from "web3";
 
 export default class App
