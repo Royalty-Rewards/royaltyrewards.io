@@ -1,0 +1,40 @@
+{
+  "name": "royalty-rewards.io",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "css-loader": "^0.28.10",
+    "document-register-element": "^1.7.2",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "imports-loader": "^0.8.0",
+    "jquery": "^3.3.1",
+    "jquery-countdown": "^2.2.0",
+    "jquery-form": "^4.2.2",
+    "jquery-ui": "^1.12.1",
+    "jquery-validation": "^1.17.0",
+    "jquery.easing": "^1.4.1",
+    "magnific-popup": "^1.1.0",
+    "node-sass": "^4.7.2",
+    "particlesjs": "^2.2.1",
+    "popper.js": "^1.12.9",
+    "proxyquire": "^2.0.0",
+    "react": "^16.2.0",
+    "react-app-rewire-provide-plugin": "^1.0.0",
+    "react-app-rewired": "^1.5.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.1",
+    "rewire": "^3.0.2",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.2",
+    "url-loader": "^1.0.1",
+    "waypoints": "^4.0.1"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "node scripts/customized-config build",
+    "test": "node scripts/customized-config test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
