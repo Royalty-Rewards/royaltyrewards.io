@@ -1,0 +1,71 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 03/10/2017 15:04
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}
+
+.flaticon-001-point-of-service:before { content: "\f100"; }
+.flaticon-002-purse:before { content: "\f101"; }
+.flaticon-003-tax-1:before { content: "\f102"; }
+.flaticon-004-diamond:before { content: "\f103"; }
+.flaticon-005-tax:before { content: "\f104"; }
+.flaticon-006-profits-1:before { content: "\f105"; }
+.flaticon-007-safebox:before { content: "\f106"; }
+.flaticon-008-idea:before { content: "\f107"; }
+.flaticon-009-smartphone-1:before { content: "\f108"; }
+.flaticon-010-piggy-bank:before { content: "\f109"; }
+.flaticon-011-pound-sterling:before { content: "\f10a"; }
+.flaticon-012-yuan:before { content: "\f10b"; }
+.flaticon-013-bitcoin:before { content: "\f10c"; }
+.flaticon-014-dollar:before { content: "\f10d"; }
+.flaticon-015-euro:before { content: "\f10e"; }
+.flaticon-016-exchange:before { content: "\f10f"; }
+.flaticon-017-growth:before { content: "\f110"; }
+.flaticon-018-briefcase-1:before { content: "\f111"; }
+.flaticon-019-briefcase:before { content: "\f112"; }
+.flaticon-020-gold-ingot:before { content: "\f113"; }
+.flaticon-021-auction:before { content: "\f114"; }
+.flaticon-022-search:before { content: "\f115"; }
+.flaticon-023-check:before { content: "\f116"; }
+.flaticon-024-profits:before { content: "\f117"; }
+.flaticon-025-loss:before { content: "\f118"; }
+.flaticon-026-invoice:before { content: "\f119"; }
+.flaticon-027-smartphone:before { content: "\f11a"; }
+.flaticon-028-coin-1:before { content: "\f11b"; }
+.flaticon-029-calculator:before { content: "\f11c"; }
+.flaticon-030-bank:before { content: "\f11d"; }
+.flaticon-031-atm-machine-1:before { content: "\f11e"; }
+.flaticon-032-atm-machine:before { content: "\f11f"; }
+.flaticon-033-money-bag:before { content: "\f120"; }
+.flaticon-034-credit-card-1:before { content: "\f121"; }
+.flaticon-035-credit-card:before { content: "\f122"; }
+.flaticon-036-wallet:before { content: "\f123"; }
+.flaticon-037-money-1:before { content: "\f124"; }
+.flaticon-038-balance:before { content: "\f125"; }
+.flaticon-039-money:before { content: "\f126"; }
+.flaticon-040-coin:before { content: "\f127"; }

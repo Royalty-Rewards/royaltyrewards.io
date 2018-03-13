@@ -1,7 +1,7 @@
 import "document-register-element";
-import "./assets/css/vendor.css";
-import "./assets/css/style.css";
-import "./assets/css/theme-ruby.css";
+import "./css/vendor.css";
+import "./css/style.css";
+import "./css/theme-ruby.css";
 import headerTemplate from "./header.html";
 import saleTemplate from "./sale.html";
 import aboutTemplate from "./about.html";
@@ -47,7 +47,7 @@ export default class LandingPage extends HTMLElement
 	// Fires when an instance was inserted into the document.
 	connectedCallback()
 	{
-		// $(this).append('<script src="assets/js/jquery.bundle.js"></script>');
+		// $(this).append('<script src="js/jquery.bundle.js"></script>');
 	    setup();
 	}
 
