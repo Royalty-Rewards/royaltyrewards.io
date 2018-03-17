@@ -1,37 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+  <script defer src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+  <script defer>
+      // Initialize Firebase
+      var config = {
+          apiKey: "AIzaSyA_Kr2wU9edDivdvOsXsEdk9djzCjqpqUQ",
+          authDomain: "royalty-rewards.firebaseapp.com",
+          databaseURL: "https://royalty-rewards.firebaseio.com",
+          projectId: "royalty-rewards",
+          storageBucket: "royalty-rewards.appspot.com",
+          messagingSenderId: "667052205902"
+      };
+      firebase.initializeApp(config);
+  </script>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  <script defer src="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.css" />
+  <script defer>
+      initApp = function() {
+          firebase.auth().onAuthStateChanged(function(user) {
+              if (user) {
+                  // User is signed in.
+                  var displayName = user.displayName;
+                  var photoURL = user.photoURL;
+                  var uid = user.uid;
+                  user.getIdToken().then(function() {
+                      var _links = document.querySelectorAll('a[href="#app"]');
+                      for (var i = 0; i < _links.length; i++) {
+                          _links[i].textContent = 'Goto Account';
+                      }
+                      var _widget = `
+                            <img src='`+photoURL+`' alt='`+displayName+`' />
+                            `+displayName+`: `;
+                      firebase.database().ref(uid + '/__accounts/eth/mainnet').once('value')
+                          .then(function (snapshot) {
+                              document.getElementById('firebaseui-auth-container').innerHTML = _widget + snapshot.val();
+                          });
+                  });
+        } else {
+            var uiConfig = {
+                signInSuccessUrl: '<url-to-redirect-to-on-success>',
+                signInOptions: [
+                    // Leave the lines as is for the providers you want to offer your users.
+                    firebase.auth.GoogleAuthProvider.PROVIDER_ID
+                ],
+                // Terms of service url.
+                tosUrl: '//tos.royaltyrewards.io'
+            };
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+            // Initialize the FirebaseUI Widget using Firebase.
+            var ui = new firebaseui.auth.AuthUI(firebase.auth());
+            // The start method will wait until the DOM is loaded.
+            if (ui.isPendingRedirect()) {
+                location.href = "#apps";
+                ui.start('#firebaseui-auth-container', uiConfig);
+            }
+        }
+        }, function(error) {
+            console.log(error);
+        });
+      };
+
+      if (document.readyState === "complete") {
+          initApp();
+      } else {
+          window.addEventListener('load', function () {
+              initApp()
+          });
+      }
+  </script>
+  <!--
+    manifest.json provides metadata used when your web app is added to the
+    homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+  -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+  <!--
+    Notice the use of %PUBLIC_URL% in the tags above.
+    It will be replaced with the URL of the `public` folder during the build.
+    Only files inside the `public` folder can be referenced from the HTML.
+
+    Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+    work correctly both with client-side routing and a non-root public URL.
+    Learn how to configure a non-root public URL by running `npm run build`.
+  -->
+  <title>Decentralized Fundraising - Royalty Rewards</title>
+</head>
+<body>
+<div id="root"></div>
+<!--
+  This HTML file is a template.
+  If you open it directly in the browser, you will see an empty page.
+
+  You can add webfonts, meta tags, or analytics to this file.
+  The build step will place the bundled scripts into the <body> tag.
+
+  To begin the development, run `npm start` or `yarn start`.
+  To create a production bundle, use `npm run build` or `yarn build`.
+-->
+</body>
 </html>
