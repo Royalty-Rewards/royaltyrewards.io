@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="theme-color" content="#000000">
 
-  <script defer src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-  <script defer>
+  <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+  <script>
       // Initialize Firebase
       var config = {
           apiKey: "AIzaSyA_Kr2wU9edDivdvOsXsEdk9djzCjqpqUQ",
@@ -19,9 +19,27 @@
       firebase.initializeApp(config);
   </script>
 
-  <script defer src="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.css" />
-  <script defer>
+  <script>
+      var uiConfig = {
+          signInSuccessUrl: '<url-to-redirect-to-on-success>',
+          signInOptions: [
+              // Leave the lines as is for the providers you want to offer your users.
+              firebase.auth.GoogleAuthProvider.PROVIDER_ID
+          ],
+          // Terms of service url.
+          tosUrl: '//tos.royaltyrewards.io'
+      };
+
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      if (ui.isPendingRedirect()) {
+          location.href = "#apps";
+          ui.start('#firebaseui-auth-container', uiConfig);
+      }
+
       initApp = function() {
           firebase.auth().onAuthStateChanged(function(user) {
               if (user) {
@@ -43,23 +61,6 @@
                           });
                   });
         } else {
-            var uiConfig = {
-                signInSuccessUrl: '<url-to-redirect-to-on-success>',
-                signInOptions: [
-                    // Leave the lines as is for the providers you want to offer your users.
-                    firebase.auth.GoogleAuthProvider.PROVIDER_ID
-                ],
-                // Terms of service url.
-                tosUrl: '//tos.royaltyrewards.io'
-            };
-
-            // Initialize the FirebaseUI Widget using Firebase.
-            var ui = new firebaseui.auth.AuthUI(firebase.auth());
-            // The start method will wait until the DOM is loaded.
-            if (ui.isPendingRedirect()) {
-                location.href = "#apps";
-                ui.start('#firebaseui-auth-container', uiConfig);
-            }
         }
         }, function(error) {
             console.log(error);
