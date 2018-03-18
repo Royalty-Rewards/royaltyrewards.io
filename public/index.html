@@ -35,10 +35,7 @@
       // Initialize the FirebaseUI Widget using Firebase.
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
       // The start method will wait until the DOM is loaded.
-      if (ui.isPendingRedirect()) {
-          location.href = "#apps";
-          ui.start('#firebaseui-auth-container', uiConfig);
-      }
+      ui.start('#firebaseui-auth-container', uiConfig);
 
       initApp = function() {
           firebase.auth().onAuthStateChanged(function(user) {
