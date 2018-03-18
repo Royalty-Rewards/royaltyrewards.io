@@ -11,10 +11,7 @@
       // Initialize the FirebaseUI Widget using Firebase.
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
       // The start method will wait until the DOM is loaded.
-      if (ui.isPendingRedirect()) {
-          location.href = "#apps";
-          ui.start('#firebaseui-auth-container', uiConfig);
-      }
+      ui.start('#firebaseui-auth-container', uiConfig);
 
       initApp = function() {
           firebase.auth().onAuthStateChanged(function(user) {
@@ -49,4 +46,4 @@
           window.addEventListener('load', function () {
               initApp()
           });
-      }</script><link rel="manifest" href="/royaltyrewards.io/manifest.json"><link rel="shortcut icon" href="/royaltyrewards.io/favicon.ico"><title>Decentralized Fundraising - Royalty Rewards</title><link href="/royaltyrewards.io/static/css/main.943eaa8d.css" rel="stylesheet"></head><body><div id="root"></div><script type="text/javascript" src="/royaltyrewards.io/static/js/main.0921ab45.js"></script></body></html>
+      }</script><link rel="manifest" href="/royaltyrewards.io/manifest.json"><link rel="shortcut icon" href="/royaltyrewards.io/favicon.ico"><title>Decentralized Fundraising - Royalty Rewards</title><link href="/royaltyrewards.io/static/css/main.43bceb7e.css" rel="stylesheet"></head><body><div id="root"></div><script type="text/javascript" src="/royaltyrewards.io/static/js/main.94993bd5.js"></script></body></html>
