@@ -23,7 +23,7 @@
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.css" />
   <script>
       var uiConfig = {
-          signInSuccessUrl: '<url-to-redirect-to-on-success>',
+          signInSuccessUrl: 'https://royaltyrewards.io/',
           signInOptions: [
               // Leave the lines as is for the providers you want to offer your users.
               firebase.auth.GoogleAuthProvider.PROVIDER_ID
@@ -49,13 +49,10 @@
                       for (var i = 0; i < _links.length; i++) {
                           _links[i].textContent = 'Goto Account';
                       }
-                      var _widget = `
-                            <img src='`+photoURL+`' alt='`+displayName+`' />
-                            `+displayName+`: `;
-                      firebase.database().ref(uid + '/__accounts/eth/mainnet').once('value')
-                          .then(function (snapshot) {
+                      var _widget = 'Signed in as: '+displayName+'<br/>Deposit address: ';
+                      firebase.database().ref(uid + '/eth/mainnet').on('value', function (snapshot) {
                               document.getElementById('firebaseui-auth-container').innerHTML = _widget + snapshot.val();
-                          });
+                      });
                   });
         } else {
         }

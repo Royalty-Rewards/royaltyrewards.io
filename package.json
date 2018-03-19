@@ -1,6 +1,6 @@
 {
-  "name": "royalty-rewards.io",
-  "homepage": "https://royalty-rewards.github.io/royaltyrewards.io",
+  "name": "royaltyrewards.io",
+  "homepage": "https://royaltyrewards.io",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
