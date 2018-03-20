@@ -10,7 +10,7 @@
       // Initialize Firebase
       var config = {
           apiKey: "AIzaSyA_Kr2wU9edDivdvOsXsEdk9djzCjqpqUQ",
-          authDomain: "royalty-rewards.firebaseapp.com",
+          authDomain: "//royaltyrewards.io",
           databaseURL: "https://royalty-rewards.firebaseio.com",
           projectId: "royalty-rewards",
           storageBucket: "royalty-rewards.appspot.com",
@@ -23,7 +23,7 @@
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.css" />
   <script>
       var uiConfig = {
-          signInSuccessUrl: 'https://royaltyrewards.io/',
+          signInSuccessUrl: 'https://royaltyrewards.io/#tokenSale',
           signInOptions: [
               // Leave the lines as is for the providers you want to offer your users.
               firebase.auth.GoogleAuthProvider.PROVIDER_ID
@@ -45,13 +45,17 @@
                   var photoURL = user.photoURL;
                   var uid = user.uid;
                   user.getIdToken().then(function() {
-                      var _links = document.querySelectorAll('a[href="#app"]');
-                      for (var i = 0; i < _links.length; i++) {
-                          _links[i].textContent = 'Goto Account';
-                      }
-                      var _widget = 'Signed in as: '+displayName+'<br/>Deposit address: ';
+                      var _links = document.querySelectorAll('a[href="#tokenSale"]');
+                      var _widget = 'Signed in as: <em>' + displayName + '</em>';
                       firebase.database().ref(uid + '/eth/mainnet').on('value', function (snapshot) {
-                              document.getElementById('firebaseui-auth-container').innerHTML = _widget + snapshot.val();
+                          var _address = 'Presale Deposit Address: <a href="#" target="_top">' + snapshot.val() + '</a>';
+                          for (var i = 0; i < _links.length; i++) {
+                              _links[i].classList.add('btn-alt');
+                              _links[i].textContent = "Presale Deposit";
+                          }
+                          var banner = document.querySelector("#header .container .banner-content");
+                          banner.innerHTML = '<h1 style="text-align: center;">' + _address + '</h1>' + banner.innerHTML;
+                          document.getElementById("firebaseui-auth-container").innerHTML = _widget + '<br/>' + _address;
                       });
                   });
         } else {
