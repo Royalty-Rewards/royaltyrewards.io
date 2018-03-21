@@ -10,7 +10,7 @@
       // Initialize Firebase
       var config = {
           apiKey: "AIzaSyA_Kr2wU9edDivdvOsXsEdk9djzCjqpqUQ",
-          authDomain: "//royaltyrewards.io",
+          authDomain: "royaltyrewards.io",
           databaseURL: "https://royalty-rewards.firebaseio.com",
           projectId: "royalty-rewards",
           storageBucket: "royalty-rewards.appspot.com",
@@ -23,13 +23,18 @@
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.css" />
   <script>
       var uiConfig = {
-          signInSuccessUrl: 'https://royaltyrewards.io/#tokenSale',
-          signInOptions: [
-              // Leave the lines as is for the providers you want to offer your users.
-              firebase.auth.GoogleAuthProvider.PROVIDER_ID
-          ],
+          callbacks: {
+              signInSuccess: function (currentUser, credential, redirectUrl) {
+                  return false;
+              },
+          },
+          signInOptions: [{
+              provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+              authMethod: 'https://accounts.google.com',
+              clientId: '667052205902-p8emb138cc54u1dgfab19s9k8m6trgae.apps.googleusercontent.com'
+          }],
           // Terms of service url.
-          tosUrl: '//tos.royaltyrewards.io'
+          tosUrl: 'https://royaltyrewards.io'
       };
 
       // Initialize the FirebaseUI Widget using Firebase.
