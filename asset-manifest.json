@@ -1,8 +1,8 @@
 {
   "main.css": "static/css/main.b10930d8.css",
   "main.css.map": "static/css/main.b10930d8.css.map",
-  "main.js": "static/js/main.71109b3b.js",
-  "main.js.map": "static/js/main.71109b3b.js.map",
+  "main.js": "static/js/main.df1a3913.js",
+  "main.js.map": "static/js/main.df1a3913.js.map",
   "static\\media\\CRWNRR_Coin2.png": "static/media/CRWNRR_Coin2.9653f3a1.png",
   "static\\media\\Poppins-Bold.eot": "static/media/Poppins-Bold.a98acb50.eot",
   "static\\media\\Poppins-Bold.ttf": "static/media/Poppins-Bold.bb1e75e2.ttf",
@@ -24,6 +24,7 @@
   "static\\media\\Poppins-SemiBold.ttf": "static/media/Poppins-SemiBold.97933fdf.ttf",
   "static\\media\\Poppins-SemiBold.woff": "static/media/Poppins-SemiBold.16426925.woff",
   "static\\media\\Poppins-SemiBold.woff2": "static/media/Poppins-SemiBold.9af4a50c.woff2",
+  "static\\media\\anon.png": "static/media/anon.0a0633da.png",
   "static\\media\\daviddrake.jpeg": "static/media/daviddrake.4b866241.jpeg",
   "static\\media\\fontawesome-webfont.eot": "static/media/fontawesome-webfont.674f50d2.eot",
   "static\\media\\fontawesome-webfont.svg?v=4.7.0": "static/media/fontawesome-webfont.acf3dcb7.svg",
